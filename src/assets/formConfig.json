@@ -1,0 +1,204 @@
+{
+  "name": "name of the form",
+  "url": "send the form to this url",
+  "method": "http method",
+  "buttons": [
+    {
+      "label": "Submit (translated)",
+      "type": "submit",
+      "confirmation": true,
+      "confirmation_message": "Do you really want to submit this?"
+    }
+  ],
+  "groups": [
+    {
+      "gid": 0,
+      "fields": [
+        {
+          "id": 0,
+          "name": "name_of_the_field0",
+          "label": "Translated label",
+          "suffix_label": "a text to show after the input field",
+          "type": "text",
+          "required": true,
+          "placeholder": "Translated placeholder",
+          "choices": [
+            {
+              "value": "value-1",
+              "label": "label1"
+            },
+            {
+              "value": "value-2",
+              "label": "label2"
+            }
+          ],
+          "default": "default value, should work with all types",
+          "multiple_line": false,
+          "multiple_choice": true,
+          "min": "min value, should work with all types",
+          "max": "max value, should work with all types",
+          "help": "a help text to show in the i cone hover",
+          "condition": {
+            "field": "name of the field which it depends on",
+            "value": "we should have different possibilities here, not null, null, equals-to, not equals-to,contains, should work with all types"
+          }
+        },
+        {
+          "id": 1,
+          "name": "name_of_the_field1",
+          "label": "Translated label",
+          "suffix_label": "a text to show after the input field",
+          "type": "choice",
+          "required": true,
+          "placeholder": "Translated placeholder",
+          "choices": [
+            {
+              "value": "value-1",
+              "label": "label1"
+            },
+            {
+              "value": "value-2",
+              "label": "label2"
+            }
+          ],
+          "default": "default value, should work with all types",
+          "multiple_line": false,
+          "multiple_choice": false,
+          "min": "min value, should work with all types",
+          "max": "max value, should work with all types",
+          "help": "a help text to show in the i cone hover",
+          "condition": {
+            "field": "name of the field which it depends on",
+            "value": "we should have different possibilities here, not null, null, equals-to, not equals-to,contains, should work with all types"
+          }
+        }
+      ]
+    },
+    {
+      "gid": 1,
+      "fields": [
+        {
+          "id": 2,
+          "name": "name_of_the_field2",
+          "label": "Translated label",
+          "suffix_label": "a text to show after the input field",
+          "type": "date",
+          "required": true,
+          "placeholder": "Translated placeholder",
+          "choices": [
+            {
+              "value": "value-1",
+              "label": "label1"
+            },
+            {
+              "value": "value-2",
+              "label": "label2"
+            }
+          ],
+          "default": "default value, should work with all types",
+          "multiple_line": false,
+          "multiple_choice": true,
+          "min": "min value, should work with all types",
+          "max": "max value, should work with all types",
+          "help": "a help text to show in the i cone hover",
+          "condition": {
+            "field": "name of the field which it depends on",
+            "value": "we should have different possibilities here, not null, null, equals-to, not equals-to,contains, should work with all types"
+          }
+        },
+        {
+          "id": 3,
+          "name": "name_of_the_field3",
+          "label": "Translated label",
+          "suffix_label": "a text to show after the input field",
+          "type": "number",
+          "required": true,
+          "placeholder": "Translated placeholder",
+          "choices": [
+            {
+              "value": "value-1",
+              "label": "label1"
+            },
+            {
+              "value": "value-2",
+              "label": "label2"
+            }
+          ],
+          "default": "default value, should work with all types",
+          "multiple_line": true,
+          "multiple_choice": true,
+          "min": "min value, should work with all types",
+          "max": "max value, should work with all types",
+          "help": "a help text to show in the i cone hover",
+          "condition": {
+            "field": "name of the field which it depends on",
+            "value": "we should have different possibilities here, not null, null, equals-to, not equals-to,contains, should work with all types"
+          }
+        }
+      ]
+    },
+    {
+      "gid": 3,
+      "fields": [
+        {
+          "id": 4,
+          "name": "name_of_the_field4",
+          "label": "Translated label",
+          "suffix_label": "a text to show after the input field",
+          "type": "choice",
+          "required": true,
+          "placeholder": "Translated placeholder",
+          "choices": [
+            {
+              "value": "value-1",
+              "label": "label1"
+            },
+            {
+              "value": "value-2",
+              "label": "label2"
+            }
+          ],
+          "default": "default value, should work with all types",
+          "multiple_line": true,
+          "multiple_choice": true,
+          "min": "min value, should work with all types",
+          "max": "max value, should work with all types",
+          "help": "a help text to show in the i cone hover",
+          "condition": {
+            "field": "name of the field which it depends on",
+            "value": "we should have different possibilities here, not null, null, equals-to, not equals-to,contains, should work with all types"
+          }
+        },
+        {
+          "id": 5,
+          "name": "name_of_the_field5",
+          "label": "Translated label",
+          "suffix_label": "a text to show after the input field",
+          "type": "date-range",
+          "required": true,
+          "placeholder": "Translated placeholder",
+          "choices": [
+            {
+              "value": "value-1",
+              "label": "label1"
+            },
+            {
+              "value": "value-2",
+              "label": "label2"
+            }
+          ],
+          "default": "default value, should work with all types",
+          "multiple_line": false,
+          "multiple_choice": true,
+          "min": "min value, should work with all types",
+          "max": "max value, should work with all types",
+          "help": "a help text to show in the i cone hover",
+          "condition": {
+            "field": "name of the field which it depends on",
+            "value": "we should have different possibilities here, not null, null, equals-to, not equals-to,contains, should work with all types"
+          }
+        }
+      ]
+    }
+  ]
+}

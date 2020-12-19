@@ -1,0 +1,92 @@
+<template>
+  <form
+    id="form"
+    :method="formConfig.method"
+    :action="formConfig.url"
+  >
+    <div
+      v-for="group in formConfig.groups"
+      :key="group.gid"
+      class="form__group"
+    >
+      <template
+        v-for="field in group.fields"
+      >
+        <component
+          :is="resolveComponent(field.type)"
+          :key="field.name"
+          v-model="formData[field.name]"
+          :question="field"
+          @input="saveForm"
+        />
+      </template>
+    </div>
+    <div class="form__buttons">
+      <template
+        v-for="button in formConfig.buttons"
+      >
+        <label :key="button.label">{{ button.label }}
+          <input type="submit">
+        </label>
+      </template>
+    </div>
+  </form>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import { Mutation } from 'vuex-class';
+import TextInput from '@/components/TextInput.vue';
+import Choice from '@/components/Choice.vue';
+import { FormConfig } from '@/types/FormConfig';
+
+import formConfig from '@/assets/formConfig.json';
+
+@Component({
+  components: {
+    TextInput,
+    Choice,
+  },
+})
+export default class App extends Vue {
+  @Mutation('formData') mutateFormData!: (formData: Array<string | number>) => void;
+
+  formData: Array<string | number> = [];
+
+  // eslint-disable-next-line class-methods-use-this
+  get formConfig(): FormConfig {
+    return formConfig;
+  }
+
+  saveForm(): void {
+    debugger;
+    this.mutateFormData(this.formData);
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  resolveComponent(type: string): string {
+    const map: Record<string, string> = {
+      text: 'TextInput',
+      choice: 'Choice',
+      date: 'TextInput',
+      'date-range': 'TextInput',
+      number: 'TextInput',
+    };
+    return map[type];
+  }
+}
+</script>
+
+<style>
+#form {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+.form__group {
+  display: flex;
+}
+</style>
