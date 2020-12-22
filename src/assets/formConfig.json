@@ -205,6 +205,33 @@
           }
         }
       ]
+    },
+    {
+      "fields": [
+        {
+          "name": "name_of_the_field7",
+          "label": "Translated label",
+          "type": "dropdown",
+          "required": true,
+          "placeholder": "Translated placeholder",
+          "choices": [
+            {
+              "value": "value-1",
+              "label": "Label-1"
+            },
+            {
+              "value": "label-2",
+              "label": "Label-2"
+            }
+          ],
+          "default": "default value, should work with all types",
+          "multiple_line": true,
+          "multiple_choice": false,
+          "min": "min value, should work with all types",
+          "max": "max value, should work with all types",
+          "help": "a help text to show in the i cone hover"
+        }
+      ]
     }
   ]
 }
