@@ -28,7 +28,7 @@
         >
         <template v-else>
           <input
-            v-model="input1"
+            v-model="dateInput1"
             type="date"
             :placeholder="question.placeholder"
             :min="question.min"
@@ -36,7 +36,7 @@
             :required="question.required"
           >
           <input
-            v-model="input2"
+            v-model="dateInput2"
             type="date"
             :placeholder="question.placeholder"
             :min="question.min"
@@ -61,11 +61,11 @@ export default class TextInput extends Vue {
 
   @Prop() private value!: string | number;
 
-  @Watch('input1')
-  @Watch('input2')
+  @Watch('dateInput1')
+  @Watch('dateInput2')
   private onInputChange() {
-    if (this.input1 !== '' && this.input2 !== '') {
-      const value = `${this.input1}-${this.input2}`;
+    if (this.dateInput1 !== '' && this.dateInput2 !== '') {
+      const value = `${this.dateInput1}-${this.dateInput2}`;
       this.$emit('input', value);
     }
   }
@@ -73,14 +73,14 @@ export default class TextInput extends Vue {
   @Watch('value')
   private onValueChange(value: string) {
     if (this.question.type === 'date-range') {
-      this.input1 = value.substr(0, 10);
-      this.input2 = value.substr(11, 20);
+      this.dateInput1 = value.substr(0, 10);
+      this.dateInput2 = value.substr(11, 20);
     }
   }
 
-  input1 = '';
+  private dateInput1 = '';
 
-  input2 = '';
+  private dateInput2 = '';
 
   get type(): string {
     return this.question.type !== 'date-range' ? this.question.type : 'date';

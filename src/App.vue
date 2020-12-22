@@ -58,7 +58,7 @@ import formConfig from '@/assets/formConfig.json';
 export default class App extends Vue {
   @Mutation('mutateFormData') mutateFormData!: (formData: Record<string, string | number | Array<string | number>>) => void;
 
-  formData: Record<string, string | number | Array<string | number>> = {};
+  private formData: Record<string, string | number | Array<string | number>> = {};
 
   // eslint-disable-next-line class-methods-use-this
   get formConfig(): FormConfig {
@@ -75,11 +75,11 @@ export default class App extends Vue {
     return formConfig;
   }
 
-  saveForm(): void {
+  private saveForm(): void {
     this.mutateFormData(this.formData);
   }
 
-  resolveCondition(condition: Condition): boolean {
+  private resolveCondition(condition: Condition): boolean {
     if (condition) {
       const fieldValue = this.formData[condition.field] as string;
       if (fieldValue) {
@@ -114,7 +114,7 @@ export default class App extends Vue {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  resolveComponent(type: string): string {
+  private resolveComponent(type: string): string {
     const map: Record<string, string> = {
       text: 'TextInput',
       choice: 'Choice',
