@@ -82,31 +82,39 @@ export default class App extends Vue {
   private resolveCondition(condition: Condition): boolean {
     if (condition) {
       const fieldValue = this.formData[condition.field] as string | Array<string>;
-      if (fieldValue) {
-        switch (condition.condition) {
-          case 'equals':
-            if (fieldValue === condition.value) {
-              return true;
-            }
-            break;
-          case 'not equals':
-            if (fieldValue !== condition.value) {
-              return true;
-            }
-            break;
-          case 'contains':
-            if (fieldValue.includes(condition.value as string)) {
-              return true;
-            }
-            break;
-          case 'not contains':
-            if (!fieldValue.includes(condition.value as string)) {
-              return true;
-            }
-            break;
-          default:
-            return false;
-        }
+      switch (condition.condition) {
+        case 'null':
+          if (!fieldValue) {
+            return true;
+          }
+          break;
+        case 'not null':
+          if (fieldValue) {
+            return true;
+          }
+          break;
+        case 'equals':
+          if (fieldValue === condition.value) {
+            return true;
+          }
+          break;
+        case 'not equals':
+          if (fieldValue !== condition.value) {
+            return true;
+          }
+          break;
+        case 'contains':
+          if (fieldValue?.includes(condition.value as string)) {
+            return true;
+          }
+          break;
+        case 'not contain':
+          if (!fieldValue?.includes(condition.value as string)) {
+            return true;
+          }
+          break;
+        default:
+          return false;
       }
       return false;
     }
