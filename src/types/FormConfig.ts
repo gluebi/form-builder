@@ -1,53 +1,54 @@
 declare interface Button {
-  label: string,
-  type: string,
-  confirmation: boolean,
+  label: string;
+  type: string;
+  confirmation: boolean;
   // eslint-disable-next-line camelcase
-  confirmation_message: string,
+  confirmation_message: string;
 }
 
 declare interface Condition {
-  field: string,
-  value: string,
+  field: string;
+  condition: string;
+  value?: string | number;
 }
 
 declare interface Choice {
-  value: string,
-  label: string,
+  value: string;
+  label: string;
 }
 
 declare interface Question {
-  id?: number,
-  name: string,
-  label: string,
+  id?: number;
+  name: string;
+  label: string;
   // eslint-disable-next-line camelcase
-  suffix_label: string,
-  type: string,
-  required: boolean,
-  placeholder: string,
-  choices: Array<Choice>,
-  default: string,
+  suffix_label: string;
+  type: string;
+  required: boolean;
+  placeholder: string;
+  choices: Array<Choice>;
+  default: string;
   // eslint-disable-next-line camelcase
-  multiple_line: boolean,
+  multiple_line: boolean;
   // eslint-disable-next-line camelcase
-  multiple_choice: boolean,
-  min: string,
-  max: string,
-  help: string,
-  condition: Condition,
+  multiple_choice: boolean;
+  min: string;
+  max: string;
+  help: string;
+  condition: Condition;
 }
 
 declare interface Group {
-  gid?: number,
-  fields: Array<Question>,
+  gid?: number;
+  fields: Array<Question>;
 }
 
 declare interface FormConfig {
-  name: string,
-  url: string,
-  method: string,
-  buttons: Array<Button>,
-  groups: Array<Group>,
+  name: string;
+  url: string;
+  method: string;
+  buttons: Array<Button>;
+  groups: Array<Group>;
 }
 
 export {
