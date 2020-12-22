@@ -8,8 +8,7 @@ export default new Vuex.Store({
     formData: [] as Array<string | number>,
   },
   mutations: {
-    formData(state, payload: Array<string | number>): void {
-      debugger;
+    mutateFormData(state, payload: Array<string | number>): void {
       state.formData = payload;
     },
   },

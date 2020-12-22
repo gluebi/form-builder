@@ -51,7 +51,7 @@ import formConfig from '@/assets/formConfig.json';
   },
 })
 export default class App extends Vue {
-  @Mutation('formData') mutateFormData!: (formData: Array<string | number>) => void;
+  @Mutation('mutateFormData') mutateFormData!: (formData: Array<string | number | Array<string | number>>) => void;
 
   formData: Array<string | number | Array<string | number>> = [];
 
@@ -71,7 +71,6 @@ export default class App extends Vue {
   }
 
   saveForm(): void {
-    debugger;
     this.mutateFormData(this.formData);
   }
 
