@@ -25,9 +25,11 @@
       <template
         v-for="button in formConfig.buttons"
       >
-        <label :key="button.label">{{ button.label }}
-          <input type="submit">
-        </label>
+        <input
+          :key="button.label"
+          :type="button.type"
+          :value="button.label"
+        >
       </template>
     </div>
   </form>
