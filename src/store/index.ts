@@ -5,10 +5,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    formData: [] as Array<string | number>,
+    formData: {} as Record<string, string | number | Array<string | number>>,
   },
   mutations: {
-    mutateFormData(state, payload: Array<string | number>): void {
+    mutateFormData(state, payload: Record<string, string | number | Array<string | number>>): void {
       state.formData = payload;
     },
   },

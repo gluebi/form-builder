@@ -16,7 +16,7 @@
         <component
           :is="resolveComponent(field.type)"
           :key="field.name"
-          v-model="formData[field.id]"
+          v-model="formData[field.name]"
           class="form__field"
           :question="field"
           @input="saveForm"
@@ -53,9 +53,9 @@ import formConfig from '@/assets/formConfig.json';
   },
 })
 export default class App extends Vue {
-  @Mutation('mutateFormData') mutateFormData!: (formData: Array<string | number | Array<string | number>>) => void;
+  @Mutation('mutateFormData') mutateFormData!: (formData: Record<string, string | number | Array<string | number>>) => void;
 
-  formData: Array<string | number | Array<string | number>> = [];
+  formData: Record<string, string | number | Array<string | number>> = {};
 
   // eslint-disable-next-line class-methods-use-this
   get formConfig(): FormConfig {
