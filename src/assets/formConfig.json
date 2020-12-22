@@ -12,10 +12,8 @@
   ],
   "groups": [
     {
-      "gid": 0,
       "fields": [
         {
-          "id": 0,
           "name": "name_of_the_field0",
           "label": "Translated label",
           "suffix_label": "a text to show after the input field",
@@ -44,7 +42,6 @@
           }
         },
         {
-          "id": 1,
           "name": "name_of_the_field1",
           "label": "Translated label",
           "suffix_label": "a text to show after the input field",
@@ -75,10 +72,8 @@
       ]
     },
     {
-      "gid": 1,
       "fields": [
         {
-          "id": 2,
           "name": "name_of_the_field2",
           "label": "Translated label",
           "suffix_label": "a text to show after the input field",
@@ -107,7 +102,6 @@
           }
         },
         {
-          "id": 3,
           "name": "name_of_the_field3",
           "label": "Translated label",
           "suffix_label": "a text to show after the input field",
@@ -138,10 +132,8 @@
       ]
     },
     {
-      "gid": 3,
       "fields": [
         {
-          "id": 4,
           "name": "name_of_the_field4",
           "label": "Translated label",
           "suffix_label": "a text to show after the input field",
@@ -170,7 +162,6 @@
           }
         },
         {
-          "id": 5,
           "name": "name_of_the_field5",
           "label": "Translated label",
           "suffix_label": "a text to show after the input field",
@@ -190,8 +181,8 @@
           "default": "default value, should work with all types",
           "multiple_line": false,
           "multiple_choice": true,
-          "min": "min value, should work with all types",
-          "max": "max value, should work with all types",
+          "min": "2020-01-01",
+          "max": "2021-12-31",
           "help": "a help text to show in the i cone hover",
           "condition": {
             "field": "name of the field which it depends on",

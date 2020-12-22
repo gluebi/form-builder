@@ -38,7 +38,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import { Mutation } from 'vuex-class';
 import TextInput from '@/components/TextInput.vue';
 import Choice from '@/components/Choice.vue';
-import { FormConfig } from '@/types/FormConfig';
+import { FormConfig, Group, Question } from '@/types/FormConfig';
 
 import formConfig from '@/assets/formConfig.json';
 
@@ -51,10 +51,20 @@ import formConfig from '@/assets/formConfig.json';
 export default class App extends Vue {
   @Mutation('formData') mutateFormData!: (formData: Array<string | number>) => void;
 
-  formData: Array<string | number> = [];
+  formData: Array<string | number | Array<string | number>> = [];
 
   // eslint-disable-next-line class-methods-use-this
   get formConfig(): FormConfig {
+    let fIndex = 0;
+    formConfig.groups.forEach((group: Group, gIndex: number) => {
+      // eslint-disable-next-line no-param-reassign
+      group.gid = gIndex;
+      group.fields.forEach((field: Question) => {
+        // eslint-disable-next-line no-param-reassign
+        field.id = fIndex;
+        fIndex += 1;
+      });
+    });
     return formConfig;
   }
 
