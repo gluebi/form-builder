@@ -81,7 +81,7 @@ export default class App extends Vue {
 
   private resolveCondition(condition: Condition): boolean {
     if (condition) {
-      const fieldValue = this.formData[condition.field] as string;
+      const fieldValue = this.formData[condition.field] as string | Array<string>;
       if (fieldValue) {
         switch (condition.condition) {
           case 'equals':
