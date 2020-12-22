@@ -4,6 +4,7 @@
     :method="formConfig.method"
     :action="formConfig.url"
   >
+    <h1>Form Builder Prototype</h1>
     <div
       v-for="group in formConfig.groups"
       :key="group.gid"
@@ -90,15 +91,18 @@ export default class App extends Vue {
 </script>
 
 <style>
-#form {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-.form__group {
-  display: flex;
-}
+  #form {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
+  .form__group {
+    display: flex;
+  }
+  .form__field {
+    margin: 10px;
+    min-width: 200px;
+  }
 </style>
