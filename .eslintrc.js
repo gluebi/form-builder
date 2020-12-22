@@ -33,7 +33,6 @@ module.exports = {
     'vue/name-property-casing': 'warn',
     'vue/no-arrow-functions-in-watch': 'warn',
     'vue/no-async-in-computed-properties': 'warn',
-    'vue/no-bare-strings-in-template': 'warn',
     'vue/no-boolean-default': 'warn',
     'vue/no-confusing-v-for-v-if': 'warn',
     'vue/no-deprecated-scope-attribute': 'warn',
