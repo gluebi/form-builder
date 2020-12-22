@@ -43,6 +43,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import { Mutation } from 'vuex-class';
 import TextInput from '@/components/TextInput.vue';
 import Choice from '@/components/Choice.vue';
+import Dropdown from '@/components/Dropdown.vue';
 import {
   Condition, FormConfig, Group, Question,
 } from '@/types/FormConfig';
@@ -53,6 +54,7 @@ import formConfig from '@/assets/formConfig.json';
   components: {
     TextInput,
     Choice,
+    Dropdown,
   },
 })
 export default class App extends Vue {
@@ -129,6 +131,7 @@ export default class App extends Vue {
       date: 'TextInput',
       'date-range': 'TextInput',
       number: 'TextInput',
+      dropdown: 'Dropdown',
     };
     return map[type];
   }
