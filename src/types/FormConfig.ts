@@ -22,20 +22,20 @@ declare interface Question {
   name: string;
   label: string;
   // eslint-disable-next-line camelcase
-  suffix_label: string;
+  suffix_label?: string;
   type: string;
-  required: boolean;
-  placeholder: string;
-  choices: Array<Choice>;
-  default: string;
+  required?: boolean;
+  placeholder?: string;
+  choices?: Array<Choice>;
+  default?: string;
   // eslint-disable-next-line camelcase
-  multiple_line: boolean;
+  multiple_line?: boolean;
   // eslint-disable-next-line camelcase
-  multiple_choice: boolean;
-  min: string;
-  max: string;
-  help: string;
-  condition: Condition;
+  multiple_choice?: boolean;
+  min?: string;
+  max?: string;
+  help?: string;
+  condition?: Condition;
 }
 
 declare interface Group {

@@ -15,7 +15,7 @@
       "fields": [
         {
           "name": "name_of_the_field0",
-          "label": "Translated label",
+          "label": "Translated label (Type 'abc' for conditional)",
           "suffix_label": "a text to show after the input field",
           "type": "text",
           "required": true,
@@ -35,11 +35,7 @@
           "multiple_choice": true,
           "min": "min value, should work with all types",
           "max": "max value, should work with all types",
-          "help": "a help text to show in the i cone hover",
-          "condition": {
-            "field": "name of the field which it depends on",
-            "value": "we should have different possibilities here, not null, null, equals-to, not equals-to,contains, should work with all types"
-          }
+          "help": "a help text to show in the i cone hover"
         },
         {
           "name": "name_of_the_field1",
@@ -65,8 +61,9 @@
           "max": "max value, should work with all types",
           "help": "a help text to show in the i cone hover",
           "condition": {
-            "field": "name of the field which it depends on",
-            "value": "we should have different possibilities here, not null, null, equals-to, not equals-to,contains, should work with all types"
+            "field": "name_of_the_field0",
+            "condition": "equals",
+            "value": "abc"
           }
         }
       ]
@@ -75,7 +72,7 @@
       "fields": [
         {
           "name": "name_of_the_field2",
-          "label": "Translated label",
+          "label": "Translated label (select X-MAS 🎄)",
           "suffix_label": "a text to show after the input field",
           "type": "date",
           "required": true,
@@ -95,11 +92,7 @@
           "multiple_choice": true,
           "min": "min value, should work with all types",
           "max": "max value, should work with all types",
-          "help": "a help text to show in the i cone hover",
-          "condition": {
-            "field": "name of the field which it depends on",
-            "value": "we should have different possibilities here, not null, null, equals-to, not equals-to,contains, should work with all types"
-          }
+          "help": "a help text to show in the i cone hover"
         },
         {
           "name": "name_of_the_field3",
@@ -125,8 +118,9 @@
           "max": "max value, should work with all types",
           "help": "a help text to show in the i cone hover",
           "condition": {
-            "field": "name of the field which it depends on",
-            "value": "we should have different possibilities here, not null, null, equals-to, not equals-to,contains, should work with all types"
+            "field": "name_of_the_field2",
+            "condition": "contains",
+            "value": "2020-12-24"
           }
         }
       ]
@@ -155,11 +149,7 @@
           "multiple_choice": true,
           "min": "min value, should work with all types",
           "max": "max value, should work with all types",
-          "help": "a help text to show in the i cone hover",
-          "condition": {
-            "field": "name of the field which it depends on",
-            "value": "we should have different possibilities here, not null, null, equals-to, not equals-to,contains, should work with all types"
-          }
+          "help": "a help text to show in the i cone hover"
         },
         {
           "name": "name_of_the_field5",
@@ -183,11 +173,7 @@
           "multiple_choice": true,
           "min": "2020-01-01",
           "max": "2021-12-31",
-          "help": "a help text to show in the i cone hover",
-          "condition": {
-            "field": "name of the field which it depends on",
-            "value": "we should have different possibilities here, not null, null, equals-to, not equals-to,contains, should work with all types"
-          }
+          "help": "a help text to show in the i cone hover"
         }
       ]
     }

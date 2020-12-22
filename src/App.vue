@@ -15,6 +15,7 @@
       >
         <component
           :is="resolveComponent(field.type)"
+          v-if="resolveCondition(field.condition)"
           :key="field.name"
           v-model="formData[field.name]"
           class="form__field"
@@ -42,7 +43,9 @@ import { Component, Vue } from 'vue-property-decorator';
 import { Mutation } from 'vuex-class';
 import TextInput from '@/components/TextInput.vue';
 import Choice from '@/components/Choice.vue';
-import { FormConfig, Group, Question } from '@/types/FormConfig';
+import {
+  Condition, FormConfig, Group, Question,
+} from '@/types/FormConfig';
 
 import formConfig from '@/assets/formConfig.json';
 
@@ -76,6 +79,40 @@ export default class App extends Vue {
     this.mutateFormData(this.formData);
   }
 
+  resolveCondition(condition: Condition): boolean {
+    if (condition) {
+      const fieldValue = this.formData[condition.field] as string;
+      if (fieldValue) {
+        switch (condition.condition) {
+          case 'equals':
+            if (fieldValue === condition.value) {
+              return true;
+            }
+            break;
+          case 'not equals':
+            if (fieldValue !== condition.value) {
+              return true;
+            }
+            break;
+          case 'contains':
+            if (fieldValue.includes(condition.value as string)) {
+              return true;
+            }
+            break;
+          case 'not contains':
+            if (!fieldValue.includes(condition.value as string)) {
+              return true;
+            }
+            break;
+          default:
+            return false;
+        }
+      }
+      return false;
+    }
+    return true;
+  }
+
   // eslint-disable-next-line class-methods-use-this
   resolveComponent(type: string): string {
     const map: Record<string, string> = {
@@ -103,6 +140,6 @@ export default class App extends Vue {
   }
   .form__field {
     margin: 10px;
-    min-width: 200px;
+    min-width: 320px;
   }
 </style>
