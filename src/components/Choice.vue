@@ -15,7 +15,7 @@
         </label>
       </template>
     </div>
-    <p>{{ question.suffix }}</p>
+    <p>{{ question.suffix_label }}</p>
   </div>
 </template>
 

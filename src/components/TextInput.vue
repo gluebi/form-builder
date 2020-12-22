@@ -46,6 +46,7 @@
         </template>
       </template>
     </label>
+    <p>{{ question.suffix_label }}</p>
   </div>
 </template>
 
