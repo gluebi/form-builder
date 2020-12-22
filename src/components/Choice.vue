@@ -9,7 +9,7 @@
             :type="type"
             :name="question.id"
             :value="choice.value"
-            :required="question.required"
+            :required="requiredStatus"
           >
           {{ choice.label }}
         </label>
@@ -21,12 +21,20 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Question } from '@/types/FormConfig';
 
 @Component
 export default class Choice extends Vue {
-  @Prop() private question!: Record<string, unknown>;
+  @Prop() private question!: Question;
 
   @Prop({ default: () => [] }) private value!: Array<string> | string;
+
+  get requiredStatus(): boolean | undefined {
+    if (this.question.multiple_choice && this.innerValue.length) {
+      return false;
+    }
+    return this.question.required;
+  }
 
   get type(): string {
     return this.question.multiple_choice ? 'checkbox' : 'radio';
