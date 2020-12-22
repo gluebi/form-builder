@@ -15,7 +15,8 @@
         <component
           :is="resolveComponent(field.type)"
           :key="field.name"
-          v-model="formData[field.name]"
+          v-model="formData[field.id]"
+          class="form__field"
           :question="field"
           @input="saveForm"
         />
