@@ -46,6 +46,10 @@ export default class Dropdown extends Vue {
       this.$emit('input', val);
     }
   }
+
+  beforeDestroy(): void {
+    this.$emit('delete', this.question.name);
+  }
 }
 </script>
 

@@ -99,6 +99,10 @@ export default class TextInput extends Vue {
       this.$emit('input', val);
     }
   }
+
+  beforeDestroy(): void {
+    this.$emit('delete', this.question.name);
+  }
 }
 </script>
 

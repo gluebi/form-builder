@@ -47,6 +47,10 @@ export default class Choice extends Vue {
   set innerValue(val: Array<string> | string) {
     this.$emit('input', val);
   }
+
+  beforeDestroy(): void {
+    this.$emit('delete', this.question.name);
+  }
 }
 </script>
 

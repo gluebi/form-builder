@@ -21,6 +21,7 @@
           class="form__field"
           :question="field"
           @input="saveForm"
+          @delete="deleteKey($event)"
         />
       </template>
     </div>
@@ -134,6 +135,11 @@ export default class App extends Vue {
       dropdown: 'Dropdown',
     };
     return map[type];
+  }
+
+  private deleteKey(key: string): void {
+    delete this.formData[key];
+    this.mutateFormData(this.formData);
   }
 }
 </script>
