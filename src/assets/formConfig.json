@@ -15,8 +15,8 @@
       "fields": [
         {
           "name": "name_of_the_field0",
-          "label": "Translated label (Type 'abc' for conditional)",
-          "suffix_label": "a text to show after the input field",
+          "label": "Translated label",
+          "suffix_label": "(Type 'abc' for conditional)",
           "type": "text",
           "required": true,
           "placeholder": "Translated placeholder",
@@ -40,7 +40,6 @@
         {
           "name": "name_of_the_field1",
           "label": "Translated label",
-          "suffix_label": "a text to show after the input field",
           "type": "choice",
           "required": true,
           "placeholder": "Translated placeholder",
@@ -56,7 +55,7 @@
           ],
           "default": "default value, should work with all types",
           "multiple_line": false,
-          "multiple_choice": false,
+          "multiple_choice": true,
           "min": "min value, should work with all types",
           "max": "max value, should work with all types",
           "help": "a help text to show in the i cone hover",
@@ -72,8 +71,8 @@
       "fields": [
         {
           "name": "name_of_the_field2",
-          "label": "Translated label (select X-MAS 🎄)",
-          "suffix_label": "a text to show after the input field",
+          "label": "Translated label",
+          "suffix_label": "(select X-MAS \uD83C\uDF84)",
           "type": "date",
           "required": true,
           "placeholder": "Translated placeholder",
@@ -97,7 +96,6 @@
         {
           "name": "name_of_the_field3",
           "label": "Translated label",
-          "suffix_label": "a text to show after the input field",
           "type": "number",
           "required": true,
           "placeholder": "Translated placeholder",
@@ -130,23 +128,22 @@
         {
           "name": "name_of_the_field4",
           "label": "Translated label",
-          "suffix_label": "a text to show after the input field",
           "type": "choice",
           "required": true,
           "placeholder": "Translated placeholder",
           "choices": [
             {
-              "value": "value-1",
-              "label": "label1"
+              "value": "range",
+              "label": "Date-Range"
             },
             {
-              "value": "value-2",
-              "label": "label2"
+              "value": "date",
+              "label": "Date"
             }
           ],
           "default": "default value, should work with all types",
           "multiple_line": true,
-          "multiple_choice": true,
+          "multiple_choice": false,
           "min": "min value, should work with all types",
           "max": "max value, should work with all types",
           "help": "a help text to show in the i cone hover"
@@ -154,7 +151,6 @@
         {
           "name": "name_of_the_field5",
           "label": "Translated label",
-          "suffix_label": "a text to show after the input field",
           "type": "date-range",
           "required": true,
           "placeholder": "Translated placeholder",
@@ -173,7 +169,40 @@
           "multiple_choice": true,
           "min": "2020-01-01",
           "max": "2021-12-31",
-          "help": "a help text to show in the i cone hover"
+          "help": "a help text to show in the i cone hover",
+          "condition": {
+            "field": "name_of_the_field4",
+            "condition": "contains",
+            "value": "range"
+          }
+        },
+        {
+          "name": "name_of_the_field6",
+          "label": "Translated label",
+          "type": "date",
+          "required": true,
+          "placeholder": "Translated placeholder",
+          "choices": [
+            {
+              "value": "value-1",
+              "label": "label1"
+            },
+            {
+              "value": "value-2",
+              "label": "label2"
+            }
+          ],
+          "default": "default value, should work with all types",
+          "multiple_line": false,
+          "multiple_choice": true,
+          "min": "2020-01-01",
+          "max": "2021-12-31",
+          "help": "a help text to show in the i cone hover",
+          "condition": {
+            "field": "name_of_the_field4",
+            "condition": "contains",
+            "value": "date"
+          }
         }
       ]
     }
