@@ -58,7 +58,7 @@ import {
 import { Question } from '@/types/FormConfig';
 
 @Component
-export default class TextInput extends Vue {
+export default class GenericInput extends Vue {
   @Prop() private readonly question!: Question;
 
   @Prop([String, Number]) private readonly value!: string | number;

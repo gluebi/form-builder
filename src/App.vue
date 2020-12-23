@@ -42,18 +42,16 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { Mutation } from 'vuex-class';
-import TextInput from '@/components/TextInput.vue';
+import GenericInput from '@/components/GenericInput.vue';
 import Choice from '@/components/Choice.vue';
 import Dropdown from '@/components/Dropdown.vue';
-import {
-  Condition, FormConfig, Group, Question,
-} from '@/types/FormConfig';
+import { Condition, FormConfig } from '@/types/FormConfig';
 
 import formConfig from '@/assets/formConfig.json';
 
 @Component({
   components: {
-    TextInput,
+    GenericInput,
     Choice,
     Dropdown,
   },
@@ -117,12 +115,13 @@ export default class App extends Vue {
   // eslint-disable-next-line class-methods-use-this
   private resolveComponent(type: string): string {
     const map: Record<string, string> = {
-      text: 'TextInput',
+      text: 'GenericInput',
       choice: 'Choice',
-      date: 'TextInput',
-      'date-range': 'TextInput',
-      number: 'TextInput',
+      date: 'GenericInput',
+      'date-range': 'GenericInput',
+      number: 'GenericInput',
       dropdown: 'Dropdown',
+      range: 'GenericInput',
     };
     return map[type];
   }
