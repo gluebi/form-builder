@@ -32,9 +32,8 @@
           ],
           "default": "default value, should work with all types",
           "multiple_line": false,
-          "multiple_choice": true,
-          "min": "min value, should work with all types",
-          "max": "max value, should work with all types",
+          "min": 0,
+          "max": 255,
           "help": "a help text to show in the i cone hover"
         },
         {
@@ -54,10 +53,7 @@
             }
           ],
           "default": "default value, should work with all types",
-          "multiple_line": false,
           "multiple_choice": true,
-          "min": "min value, should work with all types",
-          "max": "max value, should work with all types",
           "help": "a help text to show in the i cone hover",
           "condition": {
             "field": "name_of_the_field0",
@@ -76,19 +72,7 @@
           "type": "date",
           "required": true,
           "placeholder": "Translated placeholder",
-          "choices": [
-            {
-              "value": "value-1",
-              "label": "label1"
-            },
-            {
-              "value": "value-2",
-              "label": "label2"
-            }
-          ],
           "default": "default value, should work with all types",
-          "multiple_line": false,
-          "multiple_choice": true,
           "min": "min value, should work with all types",
           "max": "max value, should work with all types",
           "help": "a help text to show in the i cone hover"
@@ -99,16 +83,6 @@
           "type": "number",
           "required": true,
           "placeholder": "Translated placeholder",
-          "choices": [
-            {
-              "value": "value-1",
-              "label": "label1"
-            },
-            {
-              "value": "value-2",
-              "label": "label2"
-            }
-          ],
           "default": "default value, should work with all types",
           "multiple_line": true,
           "multiple_choice": true,
@@ -142,8 +116,6 @@
             }
           ],
           "default": "default value, should work with all types",
-          "multiple_line": true,
-          "multiple_choice": false,
           "min": "min value, should work with all types",
           "max": "max value, should work with all types",
           "help": "a help text to show in the i cone hover"
@@ -154,19 +126,7 @@
           "type": "date-range",
           "required": true,
           "placeholder": "Translated placeholder",
-          "choices": [
-            {
-              "value": "value-1",
-              "label": "label1"
-            },
-            {
-              "value": "value-2",
-              "label": "label2"
-            }
-          ],
           "default": "default value, should work with all types",
-          "multiple_line": false,
-          "multiple_choice": true,
           "min": "2020-01-01",
           "max": "2021-12-31",
           "help": "a help text to show in the i cone hover",
@@ -182,19 +142,7 @@
           "type": "date",
           "required": true,
           "placeholder": "Translated placeholder",
-          "choices": [
-            {
-              "value": "value-1",
-              "label": "label1"
-            },
-            {
-              "value": "value-2",
-              "label": "label2"
-            }
-          ],
           "default": "default value, should work with all types",
-          "multiple_line": false,
-          "multiple_choice": true,
           "min": "2020-01-01",
           "max": "2021-12-31",
           "help": "a help text to show in the i cone hover",
@@ -225,10 +173,18 @@
             }
           ],
           "default": "default value, should work with all types",
-          "multiple_line": true,
-          "multiple_choice": false,
-          "min": "min value, should work with all types",
-          "max": "max value, should work with all types",
+          "help": "a help text to show in the i cone hover"
+        },
+        {
+          "name": "name_of_the_field8",
+          "label": "Translated label",
+          "type": "range",
+          "required": true,
+          "placeholder": "Translated placeholder",
+          "default": "default value, should work with all types",
+          "min": 0,
+          "max": 100,
+          "step": 5,
           "help": "a help text to show in the i cone hover"
         }
       ]
