@@ -6,8 +6,8 @@
   >
     <h1>Form Builder Prototype</h1>
     <div
-      v-for="group in formConfig.groups"
-      :key="group.gid"
+      v-for="(group, index) in formConfig.groups"
+      :key="index"
       class="form__group"
     >
       <template

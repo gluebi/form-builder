@@ -7,7 +7,7 @@
           <input
             v-model="innerValue"
             :type="type"
-            :name="question.id"
+            :name="question.name"
             :value="choice.value"
             :required="requiredStatus"
           >
