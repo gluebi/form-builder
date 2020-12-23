@@ -1,12 +1,10 @@
 <template>
   <div class="choice">
-    <label>{{ question.label }}
-      <span class="choice__icon">&#9432;
-        <Tooltip
-          class="choice__tooltip"
-          :text="question.help"
-        />
-      </span>
+    <label class="choice__label">{{ question.label }}
+      <Tooltip
+        class="input__tooltip"
+        :text="question.help"
+      />
     </label>
     <div class="choice__choices-container">
       <template v-for="choice in question.choices">
@@ -72,13 +70,7 @@ export default class Choice extends Vue {
     display: flex;
     flex-direction: column;
   }
-  .choice__icon {
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-  }
-  .choice__icon:hover .tooltip__text {
-    visibility: visible;
-    opacity: 1;
+  .choice__label {
+    display: flex;
   }
 </style>

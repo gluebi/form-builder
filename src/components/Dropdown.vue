@@ -1,12 +1,10 @@
 <template>
   <div class="dropdown">
-    <label>{{ question.label }}
-      <span class="dropdown__icon">&#9432;
-        <Tooltip
-          class="dropdown__tooltip"
-          :text="question.help"
-        />
-      </span>
+    <label class="dropdown__label">{{ question.label }}
+      <Tooltip
+        class="input__tooltip"
+        :text="question.help"
+      />
     </label>
     <label>
       <select
@@ -71,13 +69,7 @@ export default class Dropdown extends Vue {
     display: flex;
     flex-direction: column;
   }
-  .dropdown__icon {
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-  }
-  .dropdown__icon:hover .tooltip__text {
-    visibility: visible;
-    opacity: 1;
+  .dropdown__label {
+    display: flex;
   }
 </style>

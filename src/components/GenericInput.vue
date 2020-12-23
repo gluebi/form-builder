@@ -3,13 +3,11 @@
     class="input"
     :class="`${question.type}-input`"
   >
-    <label>{{ question.label }}
-      <span class="input__icon">&#9432;
-        <Tooltip
-          class="input__tooltip"
-          :text="question.help"
-        />
-      </span>
+    <label class="input__label">{{ question.label }}
+      <Tooltip
+        class="input__tooltip"
+        :text="question.help"
+      />
     </label>
     <label>
       <textarea
@@ -125,13 +123,7 @@ export default class GenericInput extends Vue {
     display: flex;
     flex-direction: column;
   }
-  .input__icon {
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-  }
-  .input__icon:hover .tooltip__text {
-    visibility: visible;
-    opacity: 1;
+  .input__label {
+    display: flex;
   }
 </style>

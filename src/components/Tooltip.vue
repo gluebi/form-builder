@@ -1,6 +1,8 @@
 <template>
   <div class="tooltip">
-    <span class="tooltip__text">{{ text }}</span>
+    <span class="tooltip__icon">&#9432;
+      <span class="tooltip__text">{{ text }}</span>
+    </span>
   </div>
 </template>
 
@@ -15,6 +17,16 @@ export default class GenericInput extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+.tooltip__icon {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
+}
+.tooltip__icon:hover .tooltip__text {
+  visibility: visible;
+  opacity: 1;
+}
 /* Tooltip text */
 .tooltip__text {
   visibility: hidden;
