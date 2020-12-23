@@ -25,9 +25,9 @@ import { Question } from '@/types/FormConfig';
 
 @Component
 export default class Choice extends Vue {
-  @Prop() private question!: Question;
+  @Prop() private readonly question!: Question;
 
-  @Prop({ default: () => [] }) private value!: Array<string> | string;
+  @Prop({ default: () => [] }) private readonly value!: Array<string> | string;
 
   get requiredStatus(): boolean | undefined {
     if (this.question.multiple_choice && this.innerValue.length) {

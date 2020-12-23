@@ -31,9 +31,9 @@ import { Question } from '@/types/FormConfig';
 
 @Component
 export default class Dropdown extends Vue {
-  @Prop() private question!: Question;
+  @Prop() private readonly question!: Question;
 
-  @Prop() private value!: string;
+  @Prop(String) private readonly value!: string;
 
   get innerValue(): string {
     return this.value;

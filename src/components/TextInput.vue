@@ -58,9 +58,9 @@ import { Question } from '@/types/FormConfig';
 
 @Component
 export default class TextInput extends Vue {
-  @Prop() private question!: Question;
+  @Prop() private readonly question!: Question;
 
-  @Prop() private value!: string | number;
+  @Prop([String, Number]) private readonly value!: string | number;
 
   @Watch('dateInput1')
   @Watch('dateInput2')
