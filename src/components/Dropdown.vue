@@ -1,6 +1,13 @@
 <template>
   <div class="dropdown">
-    <label>{{ question.label }}</label>
+    <label>{{ question.label }}
+      <span class="dropdown__icon">&#9432;
+        <Tooltip
+          class="dropdown__tooltip"
+          :text="question.help"
+        />
+      </span>
+    </label>
     <label>
       <select
         v-model="innerValue"
@@ -28,8 +35,13 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Question } from '@/types/FormConfig';
+import Tooltip from '@/components/Tooltip.vue';
 
-@Component
+@Component({
+  components: {
+    Tooltip,
+  },
+})
 export default class Dropdown extends Vue {
   @Prop() private readonly question!: Question;
 
@@ -58,5 +70,14 @@ export default class Dropdown extends Vue {
   .dropdown {
     display: flex;
     flex-direction: column;
+  }
+  .dropdown__icon {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown__icon:hover .tooltip__text {
+    visibility: visible;
+    opacity: 1;
   }
 </style>

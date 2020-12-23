@@ -3,7 +3,14 @@
     class="input"
     :class="`${question.type}-input`"
   >
-    <label>{{ question.label }}</label>
+    <label>{{ question.label }}
+      <span class="input__icon">&#9432;
+        <Tooltip
+          class="input__tooltip"
+          :text="question.help"
+        />
+      </span>
+    </label>
     <label>
       <textarea
         v-if="question.multiple_line && question.type === 'text'"
@@ -56,8 +63,13 @@ import {
   Component, Prop, Vue, Watch,
 } from 'vue-property-decorator';
 import { Question } from '@/types/FormConfig';
+import Tooltip from '@/components/Tooltip.vue';
 
-@Component
+@Component({
+  components: {
+    Tooltip,
+  },
+})
 export default class GenericInput extends Vue {
   @Prop() private readonly question!: Question;
 
@@ -112,5 +124,14 @@ export default class GenericInput extends Vue {
   .input {
     display: flex;
     flex-direction: column;
+  }
+  .input__icon {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+  }
+  .input__icon:hover .tooltip__text {
+    visibility: visible;
+    opacity: 1;
   }
 </style>

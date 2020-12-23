@@ -1,6 +1,13 @@
 <template>
   <div class="choice">
-    <label>{{ question.label }}</label>
+    <label>{{ question.label }}
+      <span class="choice__icon">&#9432;
+        <Tooltip
+          class="choice__tooltip"
+          :text="question.help"
+        />
+      </span>
+    </label>
     <div class="choice__choices-container">
       <template v-for="choice in question.choices">
         <label :key="choice.value">
@@ -22,8 +29,13 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Question } from '@/types/FormConfig';
+import Tooltip from '@/components/Tooltip.vue';
 
-@Component
+@Component({
+  components: {
+    Tooltip,
+  },
+})
 export default class Choice extends Vue {
   @Prop() private readonly question!: Question;
 
@@ -59,5 +71,14 @@ export default class Choice extends Vue {
   .choice {
     display: flex;
     flex-direction: column;
+  }
+  .choice__icon {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+  }
+  .choice__icon:hover .tooltip__text {
+    visibility: visible;
+    opacity: 1;
   }
 </style>
