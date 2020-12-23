@@ -13,7 +13,7 @@ declare interface Condition {
 }
 
 declare interface Choice {
-  value: string;
+  value: string | number;
   label: string;
 }
 
@@ -24,15 +24,16 @@ declare interface Question {
   suffix_label?: string;
   type: string;
   required?: boolean;
-  placeholder?: string;
+  placeholder?: string | number;
   choices?: Array<Choice>;
-  default?: string;
+  default?: string | number;
   // eslint-disable-next-line camelcase
   multiple_line?: boolean;
   // eslint-disable-next-line camelcase
   multiple_choice?: boolean;
-  min?: string;
-  max?: string;
+  min?: string | number;
+  max?: string | number;
+  step?: number;
   help?: string;
   condition?: Condition;
 }
