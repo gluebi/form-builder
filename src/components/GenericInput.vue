@@ -6,7 +6,7 @@
     <label>{{ question.label }}</label>
     <label>
       <textarea
-        v-if="question.multiple_line"
+        v-if="question.multiple_line && question.type === 'text'"
         v-model="innerValue"
         :placeholder="question.placeholder"
         :minlength="question.min"
@@ -24,6 +24,7 @@
           :minlength="question.min"
           :max="question.max"
           :maxlength="question.max"
+          :step="question.step"
           :required="question.required"
         >
         <template v-else>

@@ -18,7 +18,6 @@ declare interface Choice {
 }
 
 declare interface Question {
-  id?: number;
   name: string;
   label: string;
   // eslint-disable-next-line camelcase
@@ -39,7 +38,6 @@ declare interface Question {
 }
 
 declare interface Group {
-  gid?: number;
   fields: Array<Question>;
 }
 

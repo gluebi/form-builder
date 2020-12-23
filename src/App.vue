@@ -65,16 +65,6 @@ export default class App extends Vue {
 
   // eslint-disable-next-line class-methods-use-this
   get formConfig(): FormConfig {
-    let fIndex = 0;
-    formConfig.groups.forEach((group: Group, gIndex: number) => {
-      // eslint-disable-next-line no-param-reassign
-      group.gid = gIndex;
-      group.fields.forEach((field: Question) => {
-        // eslint-disable-next-line no-param-reassign
-        field.id = fIndex;
-        fIndex += 1;
-      });
-    });
     return formConfig;
   }
 
