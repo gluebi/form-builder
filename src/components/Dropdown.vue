@@ -11,7 +11,7 @@
           selected
           disabled
           value
-        >{{ question.placeholder }}</option>
+        >{{ question.default }}</option>
         <option
           v-for="choice in question.choices"
           :key="choice.value"
