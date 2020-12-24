@@ -57,28 +57,29 @@
 </template>
 
 <script lang="ts">
-import {
-  Component, Prop, Vue, Watch,
-} from 'vue-property-decorator';
+import { Prop, Watch } from 'vue-property-decorator';
+import { Options, Vue } from 'vue-class-component';
 import { Question } from '@/types/FormConfig';
 import Tooltip from '@/components/Tooltip.vue';
 
-@Component({
+@Options({
+  name: 'GenericInput',
   components: {
     Tooltip,
   },
+  emits: ['input'],
 })
 export default class GenericInput extends Vue {
   @Prop() private readonly question!: Question;
 
-  @Prop([String, Number]) private readonly value!: string | number;
+  @Prop([String, Number]) private readonly modelValue!: string | number;
 
   @Watch('dateInput1')
   @Watch('dateInput2')
   private onInputChange() {
     if (this.dateInput1 !== '' && this.dateInput2 !== '') {
       const value = `${this.dateInput1}-${this.dateInput2}`;
-      this.$emit('input', value);
+      this.$emit('update:modelValue', value);
     }
   }
 
@@ -100,14 +101,14 @@ export default class GenericInput extends Vue {
 
   get innerValue(): string | number | undefined {
     if (this.question.type !== 'date-range') {
-      return this.value;
+      return this.modelValue;
     }
     return undefined;
   }
 
   set innerValue(val: string | number | undefined) {
     if (this.question.type !== 'date-range') {
-      this.$emit('input', val);
+      this.$emit('update:modelValue', val);
     }
   }
 

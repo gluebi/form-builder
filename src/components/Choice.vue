@@ -7,8 +7,11 @@
       />
     </label>
     <div class="choice__choices-container">
-      <template v-for="choice in question.choices">
-        <label :key="choice.value">
+      <template
+        v-for="choice in question.choices"
+        :key="choice.value"
+      >
+        <label>
           <input
             v-model="innerValue"
             :type="type"
@@ -25,19 +28,22 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Prop } from 'vue-property-decorator';
+import { Options, Vue } from 'vue-class-component';
 import { Question } from '@/types/FormConfig';
 import Tooltip from '@/components/Tooltip.vue';
 
-@Component({
+@Options({
+  name: 'Choice',
   components: {
     Tooltip,
   },
+  emits: ['input'],
 })
 export default class Choice extends Vue {
   @Prop() private readonly question!: Question;
 
-  @Prop({ default: () => [] }) private readonly value!: Array<string> | string;
+  @Prop({ default: () => [] }) private readonly modelValue!: Array<string> | string;
 
   get requiredStatus(): boolean | undefined {
     if (this.question.multiple_choice && this.innerValue.length) {
@@ -51,11 +57,11 @@ export default class Choice extends Vue {
   }
 
   get innerValue(): Array<string> | string {
-    return this.value;
+    return this.modelValue;
   }
 
   set innerValue(val: Array<string> | string) {
-    this.$emit('input', val);
+    this.$emit('update:modelValue', val);
   }
 
   beforeDestroy(): void {

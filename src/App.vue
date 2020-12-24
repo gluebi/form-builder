@@ -28,9 +28,9 @@
     <div class="form__buttons">
       <template
         v-for="button in formConfig.buttons"
+        :key="button.label"
       >
         <input
-          :key="button.label"
           :type="button.type"
           :value="button.label"
         >
@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Options, Vue } from 'vue-class-component';
 import { Mutation } from 'vuex-class';
 import GenericInput from '@/components/GenericInput.vue';
 import Choice from '@/components/Choice.vue';
@@ -49,7 +49,8 @@ import { Condition, FormConfig } from '@/types/FormConfig';
 
 import formConfig from '@/assets/formConfig.json';
 
-@Component({
+@Options({
+  name: 'Form Builder',
   components: {
     GenericInput,
     Choice,

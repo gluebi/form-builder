@@ -7,10 +7,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Prop } from 'vue-property-decorator';
+import { Options, Vue } from 'vue-class-component';
 
-@Component
-export default class GenericInput extends Vue {
+@Options({
+  name: 'Tooltip',
+})
+export default class ToolTip extends Vue {
   @Prop() private readonly text!: string;
 }
 </script>

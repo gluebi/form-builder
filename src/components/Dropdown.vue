@@ -31,29 +31,32 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Prop } from 'vue-property-decorator';
+import { Options, Vue } from 'vue-class-component';
 import { Question } from '@/types/FormConfig';
 import Tooltip from '@/components/Tooltip.vue';
 
-@Component({
+@Options({
+  name: 'Dropdown',
   components: {
     Tooltip,
   },
+  emits: ['input'],
 })
 export default class Dropdown extends Vue {
   @Prop() private readonly question!: Question;
 
-  @Prop(String) private readonly value!: string;
+  @Prop(String) private readonly modelValue!: string;
 
   get innerValue(): string {
-    return this.value;
+    return this.modelValue;
   }
 
   set innerValue(val: string) {
     if (val === this.question.placeholder) {
-      this.$emit('input', undefined);
+      this.$emit('update:modelValue', undefined);
     } else {
-      this.$emit('input', val);
+      this.$emit('update:modelValue', val);
     }
   }
 
