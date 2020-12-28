@@ -105,7 +105,6 @@ export default class GenericInput extends Vue.with(Props) {
   }
 
   get value(): string | number | undefined {
-    debugger;
     if (this.question.type !== 'date-range') {
       return this.modelValue;
     }
