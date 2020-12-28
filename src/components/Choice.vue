@@ -13,7 +13,7 @@
       >
         <label>
           <input
-            v-model="innerValue"
+            v-model="value"
             :type="type"
             :name="question.name"
             :value="choice.value"
@@ -28,10 +28,15 @@
 </template>
 
 <script lang="ts">
-import { Prop } from 'vue-property-decorator';
 import { Options, Vue } from 'vue-class-component';
 import { Question } from '@/types/FormConfig';
 import Tooltip from '@/components/Tooltip.vue';
+
+class Props {
+  readonly question!: Question;
+
+  readonly modelValue: Array<string> = [];
+}
 
 @Options({
   name: 'Choice',
@@ -40,13 +45,9 @@ import Tooltip from '@/components/Tooltip.vue';
   },
   emits: ['input'],
 })
-export default class Choice extends Vue {
-  @Prop() private readonly question!: Question;
-
-  @Prop({ default: () => [] }) private readonly modelValue!: Array<string> | string;
-
+export default class Choice extends Vue.with(Props) {
   get requiredStatus(): boolean | undefined {
-    if (this.question.multiple_choice && this.innerValue.length) {
+    if (this.question.multiple_choice && this.value.length) {
       return false;
     }
     return this.question.required;
@@ -56,11 +57,11 @@ export default class Choice extends Vue {
     return this.question.multiple_choice ? 'checkbox' : 'radio';
   }
 
-  get innerValue(): Array<string> | string {
+  get value(): Array<string> | string {
     return this.modelValue;
   }
 
-  set innerValue(val: Array<string> | string) {
+  set value(val: Array<string> | string) {
     this.$emit('update:modelValue', val);
   }
 

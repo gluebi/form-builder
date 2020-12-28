@@ -12,7 +12,7 @@
     <label>
       <textarea
         v-if="question.multiple_line && question.type === 'text'"
-        v-model="innerValue"
+        v-model="value"
         :placeholder="question.placeholder"
         :minlength="question.min"
         :maxlength="question.max"
@@ -22,7 +22,7 @@
       <template v-else>
         <input
           v-if="question.type !== 'date-range'"
-          v-model="innerValue"
+          v-model="value"
           :type="type"
           :placeholder="question.placeholder"
           :min="question.min"
@@ -57,40 +57,45 @@
 </template>
 
 <script lang="ts">
-import { Prop, Watch } from 'vue-property-decorator';
 import { Options, Vue } from 'vue-class-component';
 import { Question } from '@/types/FormConfig';
 import Tooltip from '@/components/Tooltip.vue';
 
-@Options({
+class Props {
+  readonly question!: Question;
+
+  readonly modelValue!: string | number;
+}
+
+// eslint-disable-next-line no-use-before-define
+@Options<GenericInput>({
   name: 'GenericInput',
   components: {
     Tooltip,
   },
   emits: ['input'],
+  watch: {
+    dateInput1() {
+      if (this.dateInput1 !== '' && this.dateInput2 !== '') {
+        const value = `${this.dateInput1}-${this.dateInput2}`;
+        this.$emit('update:modelValue', value);
+      }
+    },
+    dateInput2() {
+      if (this.dateInput1 !== '' && this.dateInput2 !== '') {
+        const value = `${this.dateInput1}-${this.dateInput2}`;
+        this.$emit('update:modelValue', value);
+      }
+    },
+    value(value: string) {
+      if (this.question.type === 'date-range') {
+        this.dateInput1 = value.substr(0, 10);
+        this.dateInput2 = value.substr(11, 20);
+      }
+    },
+  },
 })
-export default class GenericInput extends Vue {
-  @Prop() private readonly question!: Question;
-
-  @Prop([String, Number]) private readonly modelValue!: string | number;
-
-  @Watch('dateInput1')
-  @Watch('dateInput2')
-  private onInputChange() {
-    if (this.dateInput1 !== '' && this.dateInput2 !== '') {
-      const value = `${this.dateInput1}-${this.dateInput2}`;
-      this.$emit('update:modelValue', value);
-    }
-  }
-
-  @Watch('value')
-  private onValueChange(value: string) {
-    if (this.question.type === 'date-range') {
-      this.dateInput1 = value.substr(0, 10);
-      this.dateInput2 = value.substr(11, 20);
-    }
-  }
-
+export default class GenericInput extends Vue.with(Props) {
   private dateInput1 = '';
 
   private dateInput2 = '';
@@ -99,14 +104,15 @@ export default class GenericInput extends Vue {
     return this.question.type !== 'date-range' ? this.question.type : 'date';
   }
 
-  get innerValue(): string | number | undefined {
+  get value(): string | number | undefined {
+    debugger;
     if (this.question.type !== 'date-range') {
       return this.modelValue;
     }
     return undefined;
   }
 
-  set innerValue(val: string | number | undefined) {
+  set value(val: string | number | undefined) {
     if (this.question.type !== 'date-range') {
       this.$emit('update:modelValue', val);
     }

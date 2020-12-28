@@ -8,7 +8,7 @@
     </label>
     <label>
       <select
-        v-model="innerValue"
+        v-model="value"
         :placeholder="question.placeholder"
         :required="question.required"
       >
@@ -31,10 +31,15 @@
 </template>
 
 <script lang="ts">
-import { Prop } from 'vue-property-decorator';
 import { Options, Vue } from 'vue-class-component';
 import { Question } from '@/types/FormConfig';
 import Tooltip from '@/components/Tooltip.vue';
+
+class Props {
+  readonly question!: Question;
+
+  readonly modelValue!: string;
+}
 
 @Options({
   name: 'Dropdown',
@@ -43,16 +48,12 @@ import Tooltip from '@/components/Tooltip.vue';
   },
   emits: ['input'],
 })
-export default class Dropdown extends Vue {
-  @Prop() private readonly question!: Question;
-
-  @Prop(String) private readonly modelValue!: string;
-
-  get innerValue(): string {
+export default class Dropdown extends Vue.with(Props) {
+  get value(): string {
     return this.modelValue;
   }
 
-  set innerValue(val: string) {
+  set value(val: string) {
     if (val === this.question.placeholder) {
       this.$emit('update:modelValue', undefined);
     } else {

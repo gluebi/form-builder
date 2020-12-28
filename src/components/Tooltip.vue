@@ -7,15 +7,16 @@
 </template>
 
 <script lang="ts">
-import { Prop } from 'vue-property-decorator';
 import { Options, Vue } from 'vue-class-component';
+
+class Props {
+  readonly text!: string;
+}
 
 @Options({
   name: 'Tooltip',
 })
-export default class ToolTip extends Vue {
-  @Prop() private readonly text!: string;
-}
+export default class ToolTip extends Vue.with(Props) {}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

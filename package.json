@@ -12,7 +12,6 @@
     "core-js": "^3.6.5",
     "vue": "^3.0.4",
     "vue-class-component": "^8.0.0-rc.1",
-    "vue-property-decorator": "^9.1.2",
     "vuex": "^4.0.0-alpha.1",
     "vuex-class": "^0.3.2"
   },

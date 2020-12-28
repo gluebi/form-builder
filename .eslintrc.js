@@ -48,4 +48,14 @@ module.exports = {
     'vue/no-multiple-slot-args': 'warn',
     'vue/no-mutating-props': 'warn',
   },
+  overrides: [
+    {
+      files: [
+        '**/src/**/**/*.vue',
+      ],
+      rules: {
+        'max-classes-per-file': ['error', 2],
+      },
+    },
+  ],
 };
