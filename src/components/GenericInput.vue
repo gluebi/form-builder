@@ -73,7 +73,7 @@ class Props {
   components: {
     Tooltip,
   },
-  emits: ['input'],
+  emits: ['update:modelValue'],
   watch: {
     dateInput1() {
       if (this.dateInput1 !== '' && this.dateInput2 !== '') {

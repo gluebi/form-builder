@@ -46,7 +46,7 @@ class Props {
   components: {
     Tooltip,
   },
-  emits: ['input'],
+  emits: ['update:modelValue', 'delete'],
 })
 export default class Dropdown extends Vue.with(Props) {
   get value(): string {

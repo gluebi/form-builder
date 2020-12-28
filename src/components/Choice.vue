@@ -28,14 +28,14 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { Options, Vue, prop } from 'vue-class-component';
 import { Question } from '@/types/FormConfig';
 import Tooltip from '@/components/Tooltip.vue';
 
 class Props {
   readonly question!: Question;
 
-  readonly modelValue: Array<string> = [];
+  readonly modelValue = prop<Array<string> | string>({ default: [] });
 }
 
 @Options({
@@ -43,11 +43,11 @@ class Props {
   components: {
     Tooltip,
   },
-  emits: ['input'],
+  emits: ['update:modelValue'],
 })
 export default class Choice extends Vue.with(Props) {
   get requiredStatus(): boolean | undefined {
-    if (this.question.multiple_choice && this.value.length) {
+    if (this.question.multiple_choice && this.value?.length) {
       return false;
     }
     return this.question.required;
