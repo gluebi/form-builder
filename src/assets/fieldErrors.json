@@ -1,0 +1,15 @@
+{
+  "status": 400,
+  "body": [],
+  "errors": [
+    {
+      "code": "invalid_field_value",
+      "detail":"This value should not be blank.",
+      "constraint": {
+        "message": "This value should not be blank.",
+        "property": "name_of_the_field0",
+        "invalid_value": ""
+      }
+    }
+  ]
+}

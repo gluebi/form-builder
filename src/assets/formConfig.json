@@ -18,7 +18,7 @@
           "label": "Translated label",
           "suffix_label": "(Type 'abc' for conditional)",
           "type": "text",
-          "required": true,
+          "required": false,
           "placeholder": "Translated placeholder",
           "choices": [
             {
