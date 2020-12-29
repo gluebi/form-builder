@@ -1,6 +1,7 @@
 <template>
   <form
     id="form"
+    ref="form"
     :method="formConfig.method"
     :action="formConfig.url"
   >
@@ -54,7 +55,10 @@ import GenericInput from '@/components/GenericInput.vue';
 import Choice from '@/components/Choice.vue';
 import Dropdown from '@/components/Dropdown.vue';
 import Modal from '@/components/Modal.vue';
-import { Condition, FormConfig } from '@/types/FormConfig';
+import {
+  Condition, FormConfig, Group, Question,
+} from '@/types/FormConfig';
+import { ErrorResponse, Error } from '@/types/ErrorResponse';
 
 import formConfig from '@/assets/formConfig.json';
 
@@ -148,7 +152,10 @@ export default class App extends Vue {
     switch (buttonType) {
       case 'submit':
         if (confirmation) {
-          this.showModal = `show-${buttonType}`;
+          const isValid = this.reportValidity();
+          if (isValid) {
+            this.showModal = `show-${buttonType}`;
+          }
         } else {
           this.submit();
         }
@@ -158,7 +165,26 @@ export default class App extends Vue {
     }
   }
 
+  private reportValidity(): boolean {
+    const { form } = this.$refs as HTMLFormElement;
+    return form.reportValidity();
+  }
+
   private submit(): void {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires,global-require
+    const fieldErrors: ErrorResponse = require('@/assets/fieldErrors.json');
+
+    fieldErrors.errors.forEach((error: Error) => {
+      this.formConfig.groups.forEach((group: Group) => {
+        group.fields.forEach((question: Question) => {
+          if (question.name === error.constraint.property) {
+            // eslint-disable-next-line no-param-reassign
+            question.error = error.constraint;
+          }
+        });
+      });
+    });
+
     this.showModal = '';
     console.log('submitted');
   }
