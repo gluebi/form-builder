@@ -26,7 +26,8 @@
         </option>
       </select>
     </label>
-    <p>{{ question.suffix_label }}</p>
+    <p v-if="question.suffix_label">{{ question.suffix_label }}</p>
+    <p v-if="question.error">{{ question.error.message }}</p>
   </div>
 </template>
 
