@@ -1,3 +1,5 @@
+import { Constraint } from '@/types/ErrorResponse';
+
 declare interface Button {
   label: string;
   type: string;
@@ -36,6 +38,7 @@ declare interface Question {
   step?: number;
   help?: string;
   condition?: Condition;
+  error?: Constraint;
 }
 
 declare interface Group {
