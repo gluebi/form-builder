@@ -33,7 +33,15 @@
         <input
           :type="button.type"
           :value="button.label"
+          @click.prevent="onButtonClick(button.type, button.confirmation)"
         >
+        <Modal
+          v-if="button.confirmation"
+          :button="button"
+          :show="showModal"
+          @close="showModal = ''"
+          @action="onButtonClick(button.type, false)"
+        />
       </template>
     </div>
   </form>
@@ -45,6 +53,7 @@ import { Mutation } from 'vuex-class';
 import GenericInput from '@/components/GenericInput.vue';
 import Choice from '@/components/Choice.vue';
 import Dropdown from '@/components/Dropdown.vue';
+import Modal from '@/components/Modal.vue';
 import { Condition, FormConfig } from '@/types/FormConfig';
 
 import formConfig from '@/assets/formConfig.json';
@@ -55,12 +64,15 @@ import formConfig from '@/assets/formConfig.json';
     GenericInput,
     Choice,
     Dropdown,
+    Modal,
   },
 })
 export default class App extends Vue {
   @Mutation('mutateFormData') mutateFormData!: (formData: Record<string, string | number | Array<string | number>>) => void;
 
   private formData: Record<string, string | number | Array<string | number>> = {};
+
+  private showModal = '';
 
   // eslint-disable-next-line class-methods-use-this
   get formConfig(): FormConfig {
@@ -131,16 +143,40 @@ export default class App extends Vue {
     delete this.formData[key];
     this.mutateFormData(this.formData);
   }
+
+  private onButtonClick(buttonType: string, confirmation: boolean): void {
+    switch (buttonType) {
+      case 'submit':
+        if (confirmation) {
+          this.showModal = `show-${buttonType}`;
+        } else {
+          this.submit();
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  private submit(): void {
+    this.showModal = '';
+    console.log('submitted');
+  }
 }
 </script>
 
 <style>
+  body {
+    box-sizing: border-box;
+    margin: 0;
+  }
   #form {
+    box-sizing: border-box;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
-    margin-top: 60px;
+    margin: 20px;
   }
   .form__group {
     display: flex;
