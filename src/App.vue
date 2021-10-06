@@ -5,7 +5,7 @@
     :method="formConfig.method"
     :action="formConfig.url"
   >
-    <h1>Form Builder Prototype</h1>
+    <h1>Form Builder</h1>
     <div
       v-for="(group, index) in formConfig.groups"
       :key="index"
